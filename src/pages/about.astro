@@ -1,5 +1,21 @@
 ---
+const pageTitle = "About Me";
 
+const identity = {
+    name: "Atharva",
+    designation: "back-end developer",
+    technology: "Zero Trust"
+}
+
+const hobbies = ["F1", "Football", "Cricket"]
+
+const happy = true;
+const finsihed = false;
+const goal = 3;
+
+const hobbyColor = "navy";
+const fontWeight = "bold"
+const textTransform = "capitalize" 
 ---
 
 <html lang="en">
@@ -8,18 +24,30 @@
         <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
         <meta name="viewport" content="width=device-width" />
         <meta name="generator" content={Astro.generator} />
-        <title>The Dev Behind the Scenes</title>
+        <title>{pageTitle}</title>
+        <style define:vars={{hobbyColor, fontWeight, textTransform}}>
+            h1 {
+                color: purple;
+                font-size: 4rem;
+            }
+
+            .hobby {
+                color: var(--hobbyColor);
+                font-weight: var(--fontWeight);
+                text-transform: var(--textTransform);
+            }
+        </style>
     </head>
     <body>
         <a href="/">Home</a>
         <a href="/about/">About</a>
         <a href="/blog/">Blogs</a>
-        <h2>About Me</h2>
+        <h1>{pageTitle}</h1>
         <p>
-            Hello! I'm Atharva, an entry-level back-end developer passionate
+            Hello! I'm {identity.name}, an entry-level {identity.designation} passionate
             about creating reliable and secure applications. Currently, I'm
             working at a startup focused on building a cutting-edge
-            cybersecurity product based on Zero Trust principles.
+            cybersecurity product based on {identity.technology} principles.
         </p>
         <p>
             This blog, <strong>DevBehindTheScenes</strong>, is where I document
@@ -28,8 +56,17 @@
             helps others in the tech community while continuously growing my
             skills.
         </p>
+
+        <p>My hobbies include playing various sports like:</p>
+        <ul>
+        {hobbies.map((hobby) => <li class="hobby">{hobby}</li>)}           
+        </ul>
+
+        {happy && <p>I am happy to be learning Astro!</p>}
+        {finsihed && <p>I finished the tutorial!</p>}
+        {goal === 3 ? <p>My goal is to finish in 3 days.</p> : <p>My goal is not 3 days.</p>}
         <p>
-            Thank you for joining me here. Feel free to reach out if you’d like
+            Thank you for joining me here. Feel free to reach out if you'd like
             to connect or discuss all things tech!
         </p>
     </body>

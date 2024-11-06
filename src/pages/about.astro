@@ -1,21 +1,17 @@
 ---
+import "../styles/global.css";
+
 const pageTitle = "About Me";
 
 const identity = {
     name: "Atharva",
-    designation: "back-end developer",
-    technology: "Zero Trust"
-}
+    designation: "Back-End Developer",
+    technology: "Zero Trust",
+};
 
-const hobbies = ["F1", "Football", "Cricket"]
-
-const happy = true;
-const finsihed = false;
-const goal = 3;
-
-const hobbyColor = "navy";
-const fontWeight = "bold"
-const textTransform = "capitalize" 
+const hobbyColor = "#10B981";
+const fontWeight = "bold";
+const textTransform = "capitalize";
 ---
 
 <html lang="en">
@@ -25,49 +21,208 @@ const textTransform = "capitalize"
         <meta name="viewport" content="width=device-width" />
         <meta name="generator" content={Astro.generator} />
         <title>{pageTitle}</title>
-        <style define:vars={{hobbyColor, fontWeight, textTransform}}>
-            h1 {
-                color: purple;
-                font-size: 4rem;
+        <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+        <style define:vars={{ hobbyColor, fontWeight, textTransform }}>
+            :root {
+                --primary-color: #8B5CF6;
+                --secondary-color: #10B981;
+                --background-color: #111827;
+                --text-color: #E5E7EB;
+                --card-background: #1F2937;
             }
 
-            .hobby {
-                color: var(--hobbyColor);
+            body {
+                font-family: 'Poppins', sans-serif;
+                color: var(--text-color);
+                margin: 0;
+                padding: 0;
+                background-color: var(--background-color);
+            }
+
+            .container {
+                max-width: 800px;
+                margin: 0 auto;
+                padding: 2rem;
+            }
+
+            h1 {
+                color: var(--primary-color);
+                font-size: 3.5rem;
+                text-align: center;
+                margin-bottom: 2rem;
+                text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+            }
+
+            .profile-card {
+                background-color: var(--card-background);
+                padding: 3rem;
+                border-radius: 20px;
+                box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+                text-align: center;
+                margin: 2rem 0;
+                transition: transform 0.3s ease, box-shadow 0.3s ease;
+            }
+
+            .profile-card:hover {
+                transform: translateY(-10px);
+                box-shadow: 0 15px 40px rgba(139, 92, 246, 0.2);
+            }
+
+            .profile-card h2 {
+                color: var(--primary-color);
+                margin: 0.5rem 0;
+                font-size: 2.5rem;
+            }
+
+            .profile-card p {
+                font-size: 1.1rem;
+                line-height: 1.8;
+                color: #9CA3AF;
+            }
+
+            .highlight {
+                color: var(--secondary-color);
                 font-weight: var(--fontWeight);
                 text-transform: var(--textTransform);
+            }
+
+            .skills-section {
+                margin: 3rem 0;
+            }
+
+            .skills-section h3 {
+                color: var(--primary-color);
+                font-size: 2rem;
+                margin-bottom: 1.5rem;
+                text-align: center;
+            }
+
+            .skills-list {
+                list-style-type: none;
+                padding: 0;
+                display: flex;
+                justify-content: center;
+                flex-wrap: wrap;
+                gap: 1rem;
+            }
+
+            .skills-list li {
+                background-color: var(--primary-color);
+                color: #fff;
+                padding: 0.7rem 1.5rem;
+                border-radius: 30px;
+                font-size: 1rem;
+                transition: all 0.3s ease;
+            }
+
+            .skills-list li:hover {
+                transform: scale(1.05);
+                box-shadow: 0 5px 15px rgba(139, 92, 246, 0.3);
+                background-color: #7C3AED;
+            }
+
+            .navbar {
+                background-color: rgba(31, 41, 55, 0.8);
+                backdrop-filter: blur(10px);
+                padding: 1rem 2rem;
+                box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+            }
+
+            .logo {
+                color: var(--primary-color);
+                font-size: 1.5rem;
+                font-weight: bold;
+                text-decoration: none;
+            }
+
+            .navbar nav a {
+                color: var(--text-color);
+                text-decoration: none;
+                margin-left: 1.5rem;
+                font-weight: 500;
+                transition: color 0.3s ease;
+            }
+
+            .navbar nav a:hover {
+                color: var(--primary-color);
+            }
+
+            .footer {
+                background-color: #1F2937;
+                color: #E5E7EB;
+                text-align: center;
+                padding: 1.5rem 0;
+                margin-top: 3rem;
+            }
+
+            @keyframes fadeIn {
+                from { opacity: 0; transform: translateY(20px); }
+                to { opacity: 1; transform: translateY(0); }
+            }
+
+            .fade-in {
+                animation: fadeIn 1s ease-out;
             }
         </style>
     </head>
     <body>
-        <a href="/">Home</a>
-        <a href="/about/">About</a>
-        <a href="/blog/">Blogs</a>
-        <h1>{pageTitle}</h1>
-        <p>
-            Hello! I'm {identity.name}, an entry-level {identity.designation} passionate
-            about creating reliable and secure applications. Currently, I'm
-            working at a startup focused on building a cutting-edge
-            cybersecurity product based on {identity.technology} principles.
-        </p>
-        <p>
-            This blog, <strong>DevBehindTheScenes</strong>, is where I document
-            my journey, share technical insights, and explore topics related to
-            back-end development and cybersecurity. I aim to create content that
-            helps others in the tech community while continuously growing my
-            skills.
-        </p>
+        <!-- Navigation Bar -->
+        <header class="navbar">
+            <a href="/" class="logo">DevBehindTheScenes</a>
+            <nav>
+                <a href="/">Home</a>
+                <a href="/about/">About</a>
+                <a href="/blog/">Blogs</a>
+            </nav>
+        </header>
 
-        <p>My hobbies include playing various sports like:</p>
-        <ul>
-        {hobbies.map((hobby) => <li class="hobby">{hobby}</li>)}           
-        </ul>
+        <!-- Main Content -->
+        <main class="container">
+            <h1 class="fade-in">{pageTitle}</h1>
 
-        {happy && <p>I am happy to be learning Astro!</p>}
-        {finsihed && <p>I finished the tutorial!</p>}
-        {goal === 3 ? <p>My goal is to finish in 3 days.</p> : <p>My goal is not 3 days.</p>}
-        <p>
-            Thank you for joining me here. Feel free to reach out if you'd like
-            to connect or discuss all things tech!
-        </p>
+            <!-- Profile Card -->
+            <div class="profile-card fade-in">
+                <h2>Hello! I'm {identity.name}</h2>
+                <p>
+                    I'm an entry-level <span class="highlight">{identity.designation}</span>
+                    passionate about creating secure and efficient applications.
+                    Currently, I'm working on a groundbreaking cybersecurity product
+                    centered on <span class="highlight">{identity.technology}</span> principles.
+                </p>
+                <p>
+                    Here on <strong>DevBehindTheScenes</strong>, I share my journey, insights,
+                    and technical knowledge in back-end development and cybersecurity.
+                    Join me as I explore the latest trends and tackle challenges in tech.
+                </p>
+            </div>
+
+            <!-- Skills Section -->
+            <section class="skills-section fade-in">
+                <h3>Skills & Interests</h3>
+                <ul class="skills-list">
+                    <li>JavaScript</li>
+                    <li>Node.js</li>
+                    <li>Express</li>
+                    <li>Cybersecurity</li>
+                    <li>Python</li>
+                    <li>REST APIs</li>
+                    <li>Database Management</li>
+                    <li>Zero Trust Architecture</li>
+                </ul>
+            </section>
+
+            <p class="fade-in">
+                Thanks for visiting! Feel free to reach out if you'd like to connect or
+                discuss anything tech-related.
+            </p>
+        </main>
+
+        <!-- Footer Section -->
+        <footer class="footer">
+            <p>&copy; 2024 DevBehindTheScenes. All rights reserved.</p>
+        </footer>
     </body>
 </html>

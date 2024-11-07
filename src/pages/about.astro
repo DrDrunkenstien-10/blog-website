@@ -1,5 +1,6 @@
 ---
-import "../styles/global.css";
+import Navigation from "../components/Navigation.astro";
+import Footer from "../components/Footer.astro";
 
 const pageTitle = "About Me";
 
@@ -21,18 +22,69 @@ const textTransform = "capitalize";
         <meta name="viewport" content="width=device-width" />
         <meta name="generator" content={Astro.generator} />
         <title>{pageTitle}</title>
-        <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+        <link
+            href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap"
+            rel="stylesheet"
+        />
+    </head>
+    <body>
+        <Navigation />
+
+        <!-- Main Content -->
+        <main class="container">
+            <h1 class="fade-in">{pageTitle}</h1>
+
+            <!-- Profile Card -->
+            <div class="profile-card fade-in">
+                <h2>Hello! I'm {identity.name}</h2>
+                <p>
+                    I'm an entry-level <span class="highlight"
+                        >{identity.designation}</span
+                    >
+                    passionate about creating secure and efficient applications.
+                    Currently, I'm working on a groundbreaking cybersecurity product
+                    centered on <span class="highlight"
+                        >{identity.technology}</span
+                    > principles.
+                </p>
+                <p>
+                    Here on <strong>DevBehindTheScenes</strong>, I share my
+                    journey, insights, and technical knowledge in back-end
+                    development and cybersecurity. Join me as I explore the
+                    latest trends and tackle challenges in tech.
+                </p>
+            </div>
+
+            <!-- Skills Section -->
+            <section class="skills-section fade-in">
+                <h3>Skills & Interests</h3>
+                <ul class="skills-list">
+                    <li>Java</li>
+                    <li>C</li>
+                    <li>Python</li>
+                    <li>Spring Boot</li>
+                    <li>PostgreSQL</li>
+                    <li>Jenkins</li>
+                    <li>Cybersecurity</li>
+                </ul>
+            </section>
+
+            <p class="fade-in">
+                Thanks for visiting! Feel free to reach out if you'd like to
+                connect or discuss anything tech-related.
+            </p>
+        </main>
         <style define:vars={{ hobbyColor, fontWeight, textTransform }}>
             :root {
-                --primary-color: #8B5CF6;
-                --secondary-color: #10B981;
+                --primary-color: #8b5cf6;
+                --secondary-color: #10b981;
                 --background-color: #111827;
-                --text-color: #E5E7EB;
-                --card-background: #1F2937;
+                --text-color: #e5e7eb;
+                --card-background: #1f2937;
             }
 
             body {
-                font-family: 'Poppins', sans-serif;
+                font-family: "Poppins", sans-serif;
                 color: var(--text-color);
                 margin: 0;
                 padding: 0;
@@ -50,7 +102,7 @@ const textTransform = "capitalize";
                 font-size: 3.5rem;
                 text-align: center;
                 margin-bottom: 2rem;
-                text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+                text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
             }
 
             .profile-card {
@@ -60,7 +112,9 @@ const textTransform = "capitalize";
                 box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
                 text-align: center;
                 margin: 2rem 0;
-                transition: transform 0.3s ease, box-shadow 0.3s ease;
+                transition:
+                    transform 0.3s ease,
+                    box-shadow 0.3s ease;
             }
 
             .profile-card:hover {
@@ -77,7 +131,7 @@ const textTransform = "capitalize";
             .profile-card p {
                 font-size: 1.1rem;
                 line-height: 1.8;
-                color: #9CA3AF;
+                color: #9ca3af;
             }
 
             .highlight {
@@ -118,111 +172,24 @@ const textTransform = "capitalize";
             .skills-list li:hover {
                 transform: scale(1.05);
                 box-shadow: 0 5px 15px rgba(139, 92, 246, 0.3);
-                background-color: #7C3AED;
-            }
-
-            .navbar {
-                background-color: rgba(31, 41, 55, 0.8);
-                backdrop-filter: blur(10px);
-                padding: 1rem 2rem;
-                box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
-                display: flex;
-                justify-content: space-between;
-                align-items: center;
-            }
-
-            .logo {
-                color: var(--primary-color);
-                font-size: 1.5rem;
-                font-weight: bold;
-                text-decoration: none;
-            }
-
-            .navbar nav a {
-                color: var(--text-color);
-                text-decoration: none;
-                margin-left: 1.5rem;
-                font-weight: 500;
-                transition: color 0.3s ease;
-            }
-
-            .navbar nav a:hover {
-                color: var(--primary-color);
-            }
-
-            .footer {
-                background-color: #1F2937;
-                color: #E5E7EB;
-                text-align: center;
-                padding: 1.5rem 0;
-                margin-top: 3rem;
+                background-color: #7c3aed;
             }
 
             @keyframes fadeIn {
-                from { opacity: 0; transform: translateY(20px); }
-                to { opacity: 1; transform: translateY(0); }
+                from {
+                    opacity: 0;
+                    transform: translateY(20px);
+                }
+                to {
+                    opacity: 1;
+                    transform: translateY(0);
+                }
             }
 
             .fade-in {
                 animation: fadeIn 1s ease-out;
             }
         </style>
-    </head>
-    <body>
-        <!-- Navigation Bar -->
-        <header class="navbar">
-            <a href="/" class="logo">DevBehindTheScenes</a>
-            <nav>
-                <a href="/">Home</a>
-                <a href="/about/">About</a>
-                <a href="/blog/">Blogs</a>
-            </nav>
-        </header>
-
-        <!-- Main Content -->
-        <main class="container">
-            <h1 class="fade-in">{pageTitle}</h1>
-
-            <!-- Profile Card -->
-            <div class="profile-card fade-in">
-                <h2>Hello! I'm {identity.name}</h2>
-                <p>
-                    I'm an entry-level <span class="highlight">{identity.designation}</span>
-                    passionate about creating secure and efficient applications.
-                    Currently, I'm working on a groundbreaking cybersecurity product
-                    centered on <span class="highlight">{identity.technology}</span> principles.
-                </p>
-                <p>
-                    Here on <strong>DevBehindTheScenes</strong>, I share my journey, insights,
-                    and technical knowledge in back-end development and cybersecurity.
-                    Join me as I explore the latest trends and tackle challenges in tech.
-                </p>
-            </div>
-
-            <!-- Skills Section -->
-            <section class="skills-section fade-in">
-                <h3>Skills & Interests</h3>
-                <ul class="skills-list">
-                    <li>JavaScript</li>
-                    <li>Node.js</li>
-                    <li>Express</li>
-                    <li>Cybersecurity</li>
-                    <li>Python</li>
-                    <li>REST APIs</li>
-                    <li>Database Management</li>
-                    <li>Zero Trust Architecture</li>
-                </ul>
-            </section>
-
-            <p class="fade-in">
-                Thanks for visiting! Feel free to reach out if you'd like to connect or
-                discuss anything tech-related.
-            </p>
-        </main>
-
-        <!-- Footer Section -->
-        <footer class="footer">
-            <p>&copy; 2024 DevBehindTheScenes. All rights reserved.</p>
-        </footer>
+        <Footer />
     </body>
 </html>

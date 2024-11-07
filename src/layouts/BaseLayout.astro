@@ -1,0 +1,304 @@
+---
+import "../styles/global.css";
+import Navigation from "../components/Navigation.astro";
+
+const { pageTitle } = Astro.props;
+---
+
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<meta name="viewport" content="width=device-width" />
+		<meta name="generator" content={Astro.generator} />
+		<title>{pageTitle}</title>
+		<link
+			href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap"
+			rel="stylesheet"
+		/>
+	</head>
+	<body>
+		<Navigation />
+		<!-- Hero Section -->
+		<section class="hero">
+			<div class="hero-content">
+				<h1 class="hero-title">Welcome to DevBehindTheScenes</h1>
+				<p class="hero-description">
+					Your resource for backend development and cybersecurity
+					insights.
+				</p>
+				<a href="/blog/" class="cta-button">Explore Blogs</a>
+			</div>
+		</section>
+    </slot>
+		<!-- Latest Posts Section -->
+		<section class="posts-section">
+			<h2>Latest Insights</h2>
+			<div class="posts">
+				<div class="post-card">
+					<h3>Getting Started with Zero Trust</h3>
+					<p>
+						An introduction to Zero Trust and how it can enhance
+						security.
+					</p>
+					<a href="/posts/post-1/" class="read-more">Read More</a>
+				</div>
+				<div class="post-card">
+					<h3>Essential Backend Tools</h3>
+					<p>
+						Tools every backend developer should know about in 2024.
+					</p>
+					<a href="/posts/post-2/" class="read-more">Read More</a>
+				</div>
+				<div class="post-card">
+					<h3>Cybersecurity Best Practices</h3>
+					<p>Top security practices for developers.</p>
+					<a href="/posts/post-3/" class="read-more">Read More</a>
+				</div>
+			</div>
+		</section>
+
+		<!-- Newsletter Section -->
+		<section class="newsletter-section">
+			<h2>Stay Updated</h2>
+			<p>Subscribe to our newsletter for the latest insights and tips.</p>
+			<form class="newsletter-form">
+				<input type="email" placeholder="Enter your email" required />
+				<button type="submit">Subscribe</button>
+			</form>
+		</section>
+		<!-- Footer Section -->
+		<footer class="footer">
+			<div class="footer-content">
+				<div class="footer-logo">
+					<a href="/" class="logo">DevBehindTheScenes</a>
+					<p>Empowering developers with knowledge and insights.</p>
+				</div>
+				<div class="footer-links">
+					<h3>Quick Links</h3>
+					<a href="/">Home</a>
+					<a href="/about/">About</a>
+					<a href="/blog/">Blogs</a>
+				</div>
+				<div class="footer-social">
+					<h3>Connect With Me</h3>
+					<a href="https://x.com/?lang=en" aria-label="Twitter"
+						>Twitter</a
+					>
+					<a
+						href="https://www.linkedin.com/in/atharva-jadhav-491235243/"
+						aria-label="LinkedIn">LinkedIn</a
+					>
+					<a
+						href="https://github.com/DrDrunkenstien-10"
+						aria-label="GitHub">GitHub</a
+					>
+				</div>
+			</div>
+			<p class="copyright">
+				&copy; 2024 DevBehindTheScenes. All rights reserved.
+			</p>
+		</footer>
+		<style>
+			:root {
+				--primary-color: #8b5cf6;
+				--secondary-color: #10b981;
+				--background-color: #111827;
+				--text-color: #e5e7eb;
+				--card-background: #1f2937;
+				--hover-color: #4c1d95;
+			}
+
+			body {
+				font-family: "Poppins", sans-serif;
+				background-color: var(--background-color);
+				color: var(--text-color);
+				margin: 0;
+				padding: 0;
+				line-height: 1.6;
+			}
+
+			/* Hero Section */
+			.hero {
+				background: linear-gradient(135deg, #2d3748, #4a5568);
+				color: #fff;
+				padding: 4rem 2rem;
+				display: flex;
+				align-items: center;
+				justify-content: space-between;
+				border-radius: 0 0 50px 50px;
+				overflow: hidden;
+			}
+
+			.hero-content {
+				max-width: 50%;
+			}
+
+			.hero-title {
+				font-size: 3rem;
+				margin: 0;
+				animation: fadeInUp 1s ease;
+			}
+
+			.hero-description {
+				font-size: 1.25rem;
+				margin: 1rem 0 2rem;
+				animation: fadeInUp 1.5s ease;
+			}
+
+			.cta-button {
+				display: inline-block;
+				padding: 0.75rem 1.5rem;
+				color: #fff;
+				background-color: var(--secondary-color);
+				border-radius: 30px;
+				font-weight: bold;
+				text-decoration: none;
+				transition: all 0.3s ease;
+				animation: fadeInUp 2s ease;
+			}
+
+			.cta-button:hover {
+				background-color: #059669;
+				transform: translateY(-3px);
+				box-shadow: 0 4px 15px rgba(16, 185, 129, 0.4);
+			}
+
+			@keyframes fadeInUp {
+				from {
+					opacity: 0;
+					transform: translateY(20px);
+				}
+				to {
+					opacity: 1;
+					transform: translateY(0);
+				}
+			}
+
+			@keyframes float {
+				0% {
+					transform: translateY(0px);
+				}
+				50% {
+					transform: translateY(-20px);
+				}
+				100% {
+					transform: translateY(0px);
+				}
+			}
+
+			/* Posts Section */
+			.posts-section {
+				padding: 4rem 2rem;
+				text-align: center;
+			}
+
+			.posts-section h2 {
+				color: var(--primary-color);
+				font-size: 2.5rem;
+				margin-bottom: 2rem;
+			}
+
+			.posts {
+				display: flex;
+				justify-content: center;
+				gap: 2rem;
+				flex-wrap: wrap;
+			}
+
+			.post-card {
+				background-color: var(--card-background);
+				border-radius: 20px;
+				box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+				padding: 1.5rem;
+				width: 100%;
+				max-width: 350px;
+				text-align: left;
+				transition: all 0.3s ease;
+			}
+
+			.post-card:hover {
+				transform: translateY(-10px);
+				box-shadow: 0 15px 40px rgba(139, 92, 246, 0.2);
+			}
+
+			.post-card h3 {
+				margin: 0 0 0.5rem;
+				color: var(--primary-color);
+			}
+
+			.post-card p {
+				margin: 0 0 1rem;
+				color: #9ca3af;
+			}
+
+			.read-more {
+				color: var(--secondary-color);
+				text-decoration: none;
+				font-weight: bold;
+				transition: color 0.3s ease;
+			}
+
+			.read-more:hover {
+				color: #059669;
+			}
+
+			/* Newsletter Section */
+			.newsletter-section {
+				background-color: #2d3748;
+				color: #fff;
+				padding: 4rem 2rem;
+				text-align: center;
+				border-radius: 50px 50px 0 0;
+			}
+
+			.newsletter-section h2 {
+				font-size: 2.5rem;
+				margin-bottom: 1rem;
+				color: var(--primary-color);
+			}
+
+			.newsletter-form {
+				display: flex;
+				justify-content: center;
+				margin-top: 2rem;
+			}
+
+			.newsletter-form input {
+				padding: 0.75rem 1rem;
+				width: 300px;
+				border: none;
+				border-radius: 30px 0 0 30px;
+				font-size: 1rem;
+				background-color: #4a5568;
+				color: #e5e7eb;
+			}
+
+			.newsletter-form input::placeholder {
+				color: #9ca3af;
+			}
+
+			.newsletter-form button {
+				padding: 0.75rem 1.5rem;
+				background-color: var(--secondary-color);
+				color: #fff;
+				border: none;
+				border-radius: 0 30px 30px 0;
+				font-size: 1rem;
+				cursor: pointer;
+				transition: background-color 0.3s ease;
+			}
+
+			.newsletter-form button:hover {
+				background-color: #059669;
+			}
+
+			@media (max-width: 768px) {
+				.hero {
+					flex-direction: column;
+					text-align: center;
+				}
+			}
+		</style>
+	</body>
+</html>

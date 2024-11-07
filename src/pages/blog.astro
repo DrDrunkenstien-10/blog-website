@@ -1,5 +1,6 @@
 ---
-import "../styles/global.css";
+import Navigation from "../components/Navigation.astro";
+import Footer from "../components/Footer.astro";
 
 const pageTitle = "Blogs";
 ---
@@ -11,18 +12,50 @@ const pageTitle = "Blogs";
         <meta name="viewport" content="width=device-width" />
         <meta name="generator" content={Astro.generator} />
         <title>{pageTitle}</title>
-        <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+        <link
+            href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap"
+            rel="stylesheet"
+        />
+    </head>
+    <body>
+        <Navigation />
+        
+        <main class="container">
+            <h1 class="fade-in">{pageTitle}</h1>
+            <p class="fade-in">
+                This is where I will post about my journey of learning new
+                technologies and share insights into backend development and
+                cybersecurity.
+            </p>
+            <ul class="blog-list fade-in">
+                <li class="blog-item">
+                    <a href="/posts/post-1/" class="blog-link"
+                        >Getting Started with Zero Trust Architecture</a
+                    >
+                </li>
+                <li class="blog-item">
+                    <a href="/posts/post-2" class="blog-link"
+                        >Essential Backend Tools for 2024</a
+                    >
+                </li>
+                <li class="blog-item">
+                    <a href="/posts/post-3" class="blog-link"
+                        >Top Cybersecurity Practices for Developers</a
+                    >
+                </li>
+            </ul>
+        </main>
         <style>
             :root {
-                --primary-color: #8B5CF6;
-                --secondary-color: #10B981;
+                --primary-color: #8b5cf6;
+                --secondary-color: #10b981;
                 --background-color: #111827;
-                --text-color: #E5E7EB;
-                --card-background: #1F2937;
+                --text-color: #e5e7eb;
+                --card-background: #1f2937;
             }
 
             body {
-                font-family: 'Poppins', sans-serif;
+                font-family: "Poppins", sans-serif;
                 background-color: var(--background-color);
                 color: var(--text-color);
                 margin: 0;
@@ -41,7 +74,7 @@ const pageTitle = "Blogs";
                 font-size: 3rem;
                 text-align: center;
                 margin-bottom: 2rem;
-                text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+                text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
             }
 
             p {
@@ -58,7 +91,9 @@ const pageTitle = "Blogs";
                 background-color: var(--card-background);
                 border-radius: 10px;
                 margin-bottom: 1rem;
-                transition: transform 0.3s ease, box-shadow 0.3s ease;
+                transition:
+                    transform 0.3s ease,
+                    box-shadow 0.3s ease;
             }
 
             .blog-item:hover {
@@ -78,35 +113,6 @@ const pageTitle = "Blogs";
                 color: var(--primary-color);
             }
 
-            .navbar {
-                background-color: rgba(31, 41, 55, 0.8);
-                backdrop-filter: blur(10px);
-                padding: 1rem 2rem;
-                box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
-                display: flex;
-                justify-content: space-between;
-                align-items: center;
-            }
-
-            .logo {
-                color: var(--primary-color);
-                font-size: 1.5rem;
-                font-weight: bold;
-                text-decoration: none;
-            }
-
-            .navbar nav a {
-                color: var(--text-color);
-                text-decoration: none;
-                margin-left: 1.5rem;
-                font-weight: 500;
-                transition: color 0.3s ease;
-            }
-
-            .navbar nav a:hover {
-                color: var(--primary-color);
-            }
-
             .footer {
                 background-color: var(--card-background);
                 color: var(--text-color);
@@ -116,48 +122,20 @@ const pageTitle = "Blogs";
             }
 
             @keyframes fadeIn {
-                from { opacity: 0; transform: translateY(20px); }
-                to { opacity: 1; transform: translateY(0); }
+                from {
+                    opacity: 0;
+                    transform: translateY(20px);
+                }
+                to {
+                    opacity: 1;
+                    transform: translateY(0);
+                }
             }
 
             .fade-in {
                 animation: fadeIn 1s ease-out;
             }
         </style>
-    </head>
-    <body>
-        <!-- Navigation Bar -->
-        <header class="navbar">
-            <a href="/" class="logo">DevBehindTheScenes</a>
-            <nav>
-                <a href="/">Home</a>
-                <a href="/about/">About</a>
-                <a href="/blog/">Blogs</a>
-            </nav>
-        </header>
-
-        <main class="container">
-            <h1 class="fade-in">{pageTitle}</h1>
-            <p class="fade-in">
-                This is where I will post about my journey of learning new
-                technologies and share insights into backend development and cybersecurity.
-            </p>
-            <ul class="blog-list fade-in">
-                <li class="blog-item">
-                    <a href="/posts/post-1/" class="blog-link">Getting Started with Zero Trust Architecture</a>
-                </li>
-                <li class="blog-item">
-                    <a href="/posts/post-2" class="blog-link">Essential Backend Tools for 2024</a>
-                </li>
-                <li class="blog-item">
-                    <a href="/posts/post-3" class="blog-link">Top Cybersecurity Practices for Developers</a>
-                </li>
-            </ul>
-        </main>
-
-        <!-- Footer Section -->
-        <footer class="footer">
-            <p>&copy; 2024 DevBehindTheScenes. All rights reserved.</p>
-        </footer>
+        <Footer />
     </body>
 </html>
